@@ -93,7 +93,7 @@ const HomePage = () => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroSlides.length]); // Tambahkan heroSlides.length sebagai dependency
 
   const filteredImages = galleryFilter === 'all' 
     ? galleryImages 
@@ -561,7 +561,7 @@ const HomePage = () => {
               {['all', 'ride', 'event', 'member'].map((filter) => (
                 <button
                   key={filter}
-                  onClick={() => setGalleryFilter(filter as any)}
+                  onClick={() => setGalleryFilter(filter as 'all' | 'ride' | 'event' | 'member')}
                   className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
                     galleryFilter === filter 
                       ? 'chrome-button text-white neon-glow' 
@@ -584,9 +584,11 @@ const HomePage = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="loading-shimmer absolute inset-0"></div>
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
+                  width={500}
+                  height={300}
                   className="w-full h-full object-cover transition-transform duration-500 scale-110"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-100 transition-all duration-500 flex items-end p-4">
@@ -620,11 +622,13 @@ const HomePage = () => {
             <div className="perspective-card">
               <div className="glass-morphism rounded-3xl overflow-hidden card-3d neon-glow">
                 <div className="aspect-video relative group">
-                  <img
-                    src="/anniv1.jpg"
-                    alt="1st Anniversary Main Event"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <Image
+                      src="/anniv1.jpg"
+                      alt="1st Anniversary Main Event"
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <h3 className="text-3xl font-bold text-white mb-2">Anniversary Celebration</h3>
@@ -637,11 +641,13 @@ const HomePage = () => {
             <div className="perspective-card">
               <div className="glass-morphism rounded-3xl overflow-hidden card-3d neon-glow">
                 <div className="aspect-video relative group">
-                  <img
-                    src="/anniv2.jpg"
-                    alt="Brotherhood Unity"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <Image
+                      src="/anniv2.jpg"
+                      alt="Brotherhood Unity"
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <h3 className="text-3xl font-bold text-white mb-2">Brotherhood Unity</h3>
@@ -657,11 +663,13 @@ const HomePage = () => {
             {anniversaryImages.slice(2).map((image) => (
               <div key={image.id} className="glass-morphism rounded-2xl p-4 hover-lift">
                 <div className="relative overflow-hidden rounded-xl group">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-full object-cover aspect-video transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover aspect-video transition-transform duration-500 group-hover:scale-110"
+                />  
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <h4 className="text-white font-semibold text-lg">{image.alt}</h4>
                   </div>
