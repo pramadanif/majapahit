@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 interface GalleryImage {
@@ -333,12 +334,8 @@ const HomePage = () => {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center space-x-3 group cursor-pointer">
-              <div className="relative chrome-shine">
-                <div className="w-14 h-14 chrome-gradient rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 neon-glow">
-                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center border border-white/20">
-                    <span className="text-chrome font-bold text-2xl">M</span>
-                  </div>
-                </div>
+              <div className="w-14 h-14 relative chrome-shine">
+                <Image src="/logo.jpg" alt="Majapahit Riders Logo" layout="fill" className="rounded-full object-cover transform group-hover:scale-110 transition-all duration-300 neon-glow"/>
               </div>
               <div className="hidden sm:block">
                 <span className="text-chrome font-bold text-2xl tracking-wider">MAJAPAHIT</span>
@@ -465,12 +462,7 @@ const HomePage = () => {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="group chrome-button text-white px-10 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 chrome-shine">
-                <span className="flex items-center space-x-3">
-                  <span>Join Brotherhood</span>
-                  <span className="transform group-hover:translate-x-2 transition-transform">→</span>
-                </span>
-              </button>
+
               <button className="group glass-morphism text-white/80 px-10 py-4 rounded-full font-light hover:scale-105 transition-all duration-300 border border-white/20">
                 <span className="flex items-center space-x-3">
                   <span>Learn More</span>
@@ -726,11 +718,7 @@ const HomePage = () => {
             </div>
           </div>
           
-          <div className="text-center mt-20">
-            <button className="chrome-button text-white px-12 py-5 rounded-full font-semibold hover:scale-105 transition-all duration-300 chrome-shine text-lg">
-              Daftar Sekarang
-            </button>
-          </div>
+
         </div>
       </section>
 
@@ -740,8 +728,8 @@ const HomePage = () => {
           <div className="grid md:grid-cols-3 gap-12 text-center md:text-left">
             <div className="md:col-span-1">
               <div className="flex items-center space-x-3 justify-center md:justify-start mb-6">
-                <div className="w-12 h-12 chrome-gradient rounded-full flex items-center justify-center border border-white/20">
-                  <span className="text-chrome font-bold text-2xl">M</span>
+                <div className="w-12 h-12 relative">
+                  <Image src="/logo.jpg" alt="Majapahit Riders Logo" layout="fill" className="rounded-full object-cover"/>
                 </div>
                 <div>
                   <span className="text-chrome font-bold text-xl tracking-wider">MAJAPAHIT</span>
