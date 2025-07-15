@@ -28,11 +28,28 @@ const Instagram = ({ className = 'w-5 h-5' }: { className?: string }) => (
   </svg>
 );
 
+// Static data moved outside the component for performance
+const galleryImages: GalleryImage[] = [
+  { id: 1, src: '/IMG_3896.jpg', alt: 'Riding through nature', category: 'ride' },
+  { id: 2, src: '/IMG_3897.jpg', alt: 'Club Photo', category: 'member' },
+  { id: 3, src: '/IMG_3898.jpg', alt: 'Member gathering', category: 'member' },
+  { id: 4, src: '/IMG_3899.jpg', alt: 'Scenic route', category: 'ride' },
+  { id: 5, src: '/IMG_3900.jpg', alt: 'Community event', category: 'event' },
+  { id: 6, src: '/IMG_3901.jpg', alt: 'New member initiation', category: 'member' },
+];
+
+const anniversaryImages = [
+  { id: 7, src: '/anniv1.jpg', alt: '1st Anniversary Celebration', category: 'anniversary' },
+  { id: 8, src: '/anniv2.jpg', alt: 'Brotherhood Unity', category: 'anniversary' },
+  { id: 9, src: '/anniv3.jpg', alt: 'Anniversary Group Photo', category: 'anniversary' },
+  { id: 10, src: '/anniv4.jpg', alt: 'Anniversary Cake Cutting', category: 'anniversary' },
+];
+
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [galleryFilter, setGalleryFilter] = useState<'all' | 'ride' | 'event' | 'member'>('all');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [scrollY, setScrollY] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
@@ -45,30 +62,13 @@ const HomePage = () => {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
     
-        setIsMounted(true);
+    setIsMounted(true);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  
-  // Sample gallery data
-  const galleryImages: GalleryImage[] = [
-    { id: 1, src: '/IMG_3896.jpg', alt: 'Riding through nature', category: 'ride' },
-    { id: 2, src: '/IMG_3897.jpg', alt: 'Club Photo', category: 'member' },
-    { id: 3, src: '/IMG_3898.jpg', alt: 'Member gathering', category: 'member' },
-    { id: 4, src: '/IMG_3899.jpg', alt: 'Scenic route', category: 'ride' },
-    { id: 5, src: '/IMG_3900.jpg', alt: 'Community event', category: 'event' },
-    { id: 6, src: '/IMG_3901.jpg', alt: 'New member initiation', category: 'member' },
-  ];
-
-  const anniversaryImages = [
-    { id: 7, src: '/anniv1.jpg', alt: '1st Anniversary Celebration', category: 'anniversary' },
-    { id: 8, src: '/anniv2.jpg', alt: 'Brotherhood Unity', category: 'anniversary' },
-    { id: 9, src: '/anniv3.jpg', alt: 'Anniversary Group Photo', category: 'anniversary' },
-    { id: 10, src: '/anniv4.jpg', alt: 'Anniversary Cake Cutting', category: 'anniversary' },
-  ];
 
   const heroSlides = [
     { 
@@ -93,10 +93,11 @@ const HomePage = () => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroSlides.length]);
 
-  const filteredImages = galleryFilter === 'all' 
-    ? galleryImages 
+  // Derived state for the gallery, no need for useEffect
+  const filteredImages = galleryFilter === 'all'
+    ? galleryImages
     : galleryImages.filter(img => img.category === galleryFilter);
 
   return (
@@ -561,7 +562,7 @@ const HomePage = () => {
               {['all', 'ride', 'event', 'member'].map((filter) => (
                 <button
                   key={filter}
-                  onClick={() => setGalleryFilter(filter as any)}
+                  onClick={() => setGalleryFilter(filter as 'all' | 'ride' | 'event' | 'member')}
                   className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
                     galleryFilter === filter 
                       ? 'chrome-button text-white neon-glow' 
@@ -577,18 +578,14 @@ const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredImages.map((image, index) => (
+            {filteredImages.map((image: GalleryImage, index: number) => (
               <div 
                 key={image.id} 
                 className="group relative overflow-hidden rounded-2xl glass-morphism aspect-video cursor-pointer hover-lift"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="loading-shimmer absolute inset-0"></div>
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 scale-110"
-                />
+                <Image src={image.src} alt={image.alt} layout="fill" className="w-full h-full object-cover transition-transform duration-500 scale-110"/>
                 <div className="absolute inset-0 bg-black/50 opacity-100 transition-all duration-500 flex items-end p-4">
                   <span className="text-white text-base font-semibold text-center transition-all duration-300">
                     {image.alt}
@@ -620,9 +617,11 @@ const HomePage = () => {
             <div className="perspective-card">
               <div className="glass-morphism rounded-3xl overflow-hidden card-3d neon-glow">
                 <div className="aspect-video relative group">
-                  <img
+                  <Image
                     src="/anniv1.jpg"
                     alt="1st Anniversary Main Event"
+                    width={500}
+                    height={300}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -637,9 +636,11 @@ const HomePage = () => {
             <div className="perspective-card">
               <div className="glass-morphism rounded-3xl overflow-hidden card-3d neon-glow">
                 <div className="aspect-video relative group">
-                  <img
+                  <Image
                     src="/anniv2.jpg"
                     alt="Brotherhood Unity"
+                    width={500}
+                    height={300}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -657,9 +658,11 @@ const HomePage = () => {
             {anniversaryImages.slice(2).map((image) => (
               <div key={image.id} className="glass-morphism rounded-2xl p-4 hover-lift">
                 <div className="relative overflow-hidden rounded-xl group">
-                  <img 
+                  <Image 
                     src={image.src} 
                     alt={image.alt} 
+                    width={500}
+                    height={300}
                     className="w-full h-full object-cover aspect-video transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
