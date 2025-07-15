@@ -436,6 +436,7 @@ const HomePage = () => {
                                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-chrome mb-4 tracking-wider leading-none">
                     {heroSlides[currentSlide].title}
                   </h1>
+                  
                                     <h2 className="text-lg md:text-xl lg:text-2xl text-white/80 mb-6 font-light typewriter">
                     {heroSlides[currentSlide].subtitle}
                   </h2>
@@ -513,35 +514,23 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="space-y-8">
-              <div className="perspective-card">
-                <div className="glass-morphism p-8 rounded-2xl card-3d neon-glow">
-                  <h3 className="text-3xl font-bold text-chrome mb-6">VISI</h3>
-                  <p className="text-white/80 leading-relaxed text-lg font-light">
-                    Menjadikan organisasi yang memiliki kesadaran sosial yang tinggi dan menjunjung 
-                    tinggi sopan santun dimanapun berada. Menjadikan Majapahit lebih maju dan 
-                    membekas di kalangan masyarakat.
+            <div className="grid md:grid-cols-1 gap-10">
+              {/* Visi Card */}
+              <div className="p-8 rounded-2xl bg-gray-50 text-gray-900 hover-lift text-center perspective-card shadow-lg shadow-white/10">
+                <div className="card-3d">
+                  <h3 className="text-3xl font-bold text-gray-800 mb-4">Visi</h3>
+                  <p className="text-gray-700 text-lg">
+                    Persaudaraan sampai mendarah daging.
                   </p>
                 </div>
               </div>
-              
-              <div className="perspective-card">
-                <div className="glass-morphism p-8 rounded-2xl card-3d neon-glow">
-                  <h3 className="text-3xl font-bold text-chrome mb-6">MISI</h3>
-                  <div className="space-y-4 text-white/80 text-lg font-light">
-                    <div className="flex items-start space-x-3">
-                      <span className="text-white/60 mt-1">•</span>
-                      <span>Menjaga tali persaudaraan antar sesama club otomotif dan masyarakat</span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <span className="text-white/60 mt-1">•</span>
-                      <span>Mengubah citra negatif tentang komunitas motor di masyarakat</span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <span className="text-white/60 mt-1">•</span>
-                      <span>Membangun solidaritas yang kuat antar anggota</span>
-                    </div>
-                  </div>
+              {/* Misi Card */}
+              <div className="p-8 rounded-2xl bg-gray-50 text-gray-900 hover-lift text-center perspective-card shadow-lg shadow-white/10">
+                <div className="card-3d">
+                  <h3 className="text-3xl font-bold text-gray-800 mb-4">Misi</h3>
+                  <p className="text-gray-700 text-lg">
+                    Menjunjung tinggi persaudaraan dan sopan santun dimanapun berada, serta menjadikan citra club motor baik dikalangan masyarakat.
+                  </p>
                 </div>
               </div>
             </div>
@@ -689,7 +678,7 @@ const HomePage = () => {
             <p className="text-white/70 text-xl font-light">Bergabunglah dengan keluarga besar Majapahit Riders</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-1 gap-12 max-w-2xl mx-auto">
             <div className="glass-morphism p-8 rounded-2xl hover-lift retro-border">
               <h3 className="text-3xl font-bold text-chrome mb-8">SYARAT MEMBER</h3>
               <ul className="space-y-4 text-white/80 text-lg font-light">
@@ -703,22 +692,6 @@ const HomePage = () => {
                 ].map((item, i) => (
                   <li key={i} className="flex items-start space-x-3">
                     <span className="text-white/50 mt-1">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className="glass-morphism p-8 rounded-2xl hover-lift border-2 border-red-500/30">
-              <h3 className="text-3xl font-bold text-red-400 mb-8 filter drop-shadow(0 0 10px rgba(255,0,0,0.5))">LARANGAN</h3>
-              <ul className="space-y-4 text-white/80 text-lg font-light">
-                {[ 'DILARANG melepas jaket sakral Majapahit saat ada undangan/event',
-                   'Dilarang double komunitas atau menjadi member/prospek di pihak lain',
-                   'Melanggar kode etik persaudaraan',
-                   'Tidak mengikuti kegiatan tanpa alasan yang jelas'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start space-x-3">
-                    <span className="text-red-400/50 mt-1">•</span>
                     <span>{item}</span>
                   </li>
                 ))}

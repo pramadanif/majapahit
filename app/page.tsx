@@ -28,28 +28,11 @@ const Instagram = ({ className = 'w-5 h-5' }: { className?: string }) => (
   </svg>
 );
 
-// Static data moved outside the component for performance
-const galleryImages: GalleryImage[] = [
-  { id: 1, src: '/IMG_3896.jpg', alt: 'Riding through nature', category: 'ride' },
-  { id: 2, src: '/IMG_3897.jpg', alt: 'Club Photo', category: 'member' },
-  { id: 3, src: '/IMG_3898.jpg', alt: 'Member gathering', category: 'member' },
-  { id: 4, src: '/IMG_3899.jpg', alt: 'Scenic route', category: 'ride' },
-  { id: 5, src: '/IMG_3900.jpg', alt: 'Community event', category: 'event' },
-  { id: 6, src: '/IMG_3901.jpg', alt: 'New member initiation', category: 'member' },
-];
-
-const anniversaryImages = [
-  { id: 7, src: '/anniv1.jpg', alt: '1st Anniversary Celebration', category: 'anniversary' },
-  { id: 8, src: '/anniv2.jpg', alt: 'Brotherhood Unity', category: 'anniversary' },
-  { id: 9, src: '/anniv3.jpg', alt: 'Anniversary Group Photo', category: 'anniversary' },
-  { id: 10, src: '/anniv4.jpg', alt: 'Anniversary Cake Cutting', category: 'anniversary' },
-];
-
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [galleryFilter, setGalleryFilter] = useState<'all' | 'ride' | 'event' | 'member'>('all');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+    const [scrollY, setScrollY] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
@@ -62,13 +45,30 @@ const HomePage = () => {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
     
-    setIsMounted(true);
+        setIsMounted(true);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+  
+  // Sample gallery data
+  const galleryImages: GalleryImage[] = [
+    { id: 1, src: '/IMG_3896.jpg', alt: 'Riding through nature', category: 'ride' },
+    { id: 2, src: '/IMG_3897.jpg', alt: 'Club Photo', category: 'member' },
+    { id: 3, src: '/IMG_3898.jpg', alt: 'Member gathering', category: 'member' },
+    { id: 4, src: '/IMG_3899.jpg', alt: 'Scenic route', category: 'ride' },
+    { id: 5, src: '/IMG_3900.jpg', alt: 'Community event', category: 'event' },
+    { id: 6, src: '/IMG_3901.jpg', alt: 'New member initiation', category: 'member' },
+  ];
+
+  const anniversaryImages = [
+    { id: 7, src: '/anniv1.jpg', alt: '1st Anniversary Celebration', category: 'anniversary' },
+    { id: 8, src: '/anniv2.jpg', alt: 'Brotherhood Unity', category: 'anniversary' },
+    { id: 9, src: '/anniv3.jpg', alt: 'Anniversary Group Photo', category: 'anniversary' },
+    { id: 10, src: '/anniv4.jpg', alt: 'Anniversary Cake Cutting', category: 'anniversary' },
+  ];
 
   const heroSlides = [
     { 
@@ -93,11 +93,10 @@ const HomePage = () => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [heroSlides.length]);
+  }, [heroSlides.length]); // Tambahkan heroSlides.length sebagai dependency
 
-  // Derived state for the gallery, no need for useEffect
-  const filteredImages = galleryFilter === 'all'
-    ? galleryImages
+  const filteredImages = galleryFilter === 'all' 
+    ? galleryImages 
     : galleryImages.filter(img => img.category === galleryFilter);
 
   return (
@@ -437,6 +436,7 @@ const HomePage = () => {
                                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-chrome mb-4 tracking-wider leading-none">
                     {heroSlides[currentSlide].title}
                   </h1>
+                  
                                     <h2 className="text-lg md:text-xl lg:text-2xl text-white/80 mb-6 font-light typewriter">
                     {heroSlides[currentSlide].subtitle}
                   </h2>
@@ -514,35 +514,23 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="space-y-8">
-              <div className="perspective-card">
-                <div className="glass-morphism p-8 rounded-2xl card-3d neon-glow">
-                  <h3 className="text-3xl font-bold text-chrome mb-6">VISI</h3>
-                  <p className="text-white/80 leading-relaxed text-lg font-light">
-                    Menjadikan organisasi yang memiliki kesadaran sosial yang tinggi dan menjunjung 
-                    tinggi sopan santun dimanapun berada. Menjadikan Majapahit lebih maju dan 
-                    membekas di kalangan masyarakat.
+            <div className="grid md:grid-cols-1 gap-10">
+              {/* Visi Card */}
+              <div className="p-8 rounded-2xl bg-gray-50 text-gray-900 hover-lift text-center perspective-card shadow-lg shadow-white/10">
+                <div className="card-3d">
+                  <h3 className="text-3xl font-bold text-gray-800 mb-4">Visi</h3>
+                  <p className="text-gray-700 text-lg">
+                    Persaudaraan sampai mendarah daging.
                   </p>
                 </div>
               </div>
-              
-              <div className="perspective-card">
-                <div className="glass-morphism p-8 rounded-2xl card-3d neon-glow">
-                  <h3 className="text-3xl font-bold text-chrome mb-6">MISI</h3>
-                  <div className="space-y-4 text-white/80 text-lg font-light">
-                    <div className="flex items-start space-x-3">
-                      <span className="text-white/60 mt-1">•</span>
-                      <span>Menjaga tali persaudaraan antar sesama club otomotif dan masyarakat</span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <span className="text-white/60 mt-1">•</span>
-                      <span>Mengubah citra negatif tentang komunitas motor di masyarakat</span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <span className="text-white/60 mt-1">•</span>
-                      <span>Membangun solidaritas yang kuat antar anggota</span>
-                    </div>
-                  </div>
+              {/* Misi Card */}
+              <div className="p-8 rounded-2xl bg-gray-50 text-gray-900 hover-lift text-center perspective-card shadow-lg shadow-white/10">
+                <div className="card-3d">
+                  <h3 className="text-3xl font-bold text-gray-800 mb-4">Misi</h3>
+                  <p className="text-gray-700 text-lg">
+                    Menjunjung tinggi persaudaraan dan sopan santun dimanapun berada, serta menjadikan citra club motor baik dikalangan masyarakat.
+                  </p>
                 </div>
               </div>
             </div>
@@ -578,14 +566,20 @@ const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredImages.map((image: GalleryImage, index: number) => (
+            {filteredImages.map((image, index) => (
               <div 
                 key={image.id} 
                 className="group relative overflow-hidden rounded-2xl glass-morphism aspect-video cursor-pointer hover-lift"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="loading-shimmer absolute inset-0"></div>
-                <Image src={image.src} alt={image.alt} layout="fill" className="w-full h-full object-cover transition-transform duration-500 scale-110"/>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={500}
+                  height={300}
+                  className="w-full h-full object-cover transition-transform duration-500 scale-110"
+                />
                 <div className="absolute inset-0 bg-black/50 opacity-100 transition-all duration-500 flex items-end p-4">
                   <span className="text-white text-base font-semibold text-center transition-all duration-300">
                     {image.alt}
@@ -618,12 +612,12 @@ const HomePage = () => {
               <div className="glass-morphism rounded-3xl overflow-hidden card-3d neon-glow">
                 <div className="aspect-video relative group">
                   <Image
-                    src="/anniv1.jpg"
-                    alt="1st Anniversary Main Event"
-                    width={500}
-                    height={300}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                      src="/anniv1.jpg"
+                      alt="1st Anniversary Main Event"
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <h3 className="text-3xl font-bold text-white mb-2">Anniversary Celebration</h3>
@@ -637,12 +631,12 @@ const HomePage = () => {
               <div className="glass-morphism rounded-3xl overflow-hidden card-3d neon-glow">
                 <div className="aspect-video relative group">
                   <Image
-                    src="/anniv2.jpg"
-                    alt="Brotherhood Unity"
-                    width={500}
-                    height={300}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                      src="/anniv2.jpg"
+                      alt="Brotherhood Unity"
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <h3 className="text-3xl font-bold text-white mb-2">Brotherhood Unity</h3>
@@ -658,13 +652,13 @@ const HomePage = () => {
             {anniversaryImages.slice(2).map((image) => (
               <div key={image.id} className="glass-morphism rounded-2xl p-4 hover-lift">
                 <div className="relative overflow-hidden rounded-xl group">
-                  <Image 
-                    src={image.src} 
-                    alt={image.alt} 
-                    width={500}
-                    height={300}
-                    className="w-full h-full object-cover aspect-video transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover aspect-video transition-transform duration-500 group-hover:scale-110"
+                />  
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <h4 className="text-white font-semibold text-lg">{image.alt}</h4>
                   </div>
@@ -684,7 +678,7 @@ const HomePage = () => {
             <p className="text-white/70 text-xl font-light">Bergabunglah dengan keluarga besar Majapahit Riders</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-1 gap-12 max-w-2xl mx-auto">
             <div className="glass-morphism p-8 rounded-2xl hover-lift retro-border">
               <h3 className="text-3xl font-bold text-chrome mb-8">SYARAT MEMBER</h3>
               <ul className="space-y-4 text-white/80 text-lg font-light">
@@ -698,22 +692,6 @@ const HomePage = () => {
                 ].map((item, i) => (
                   <li key={i} className="flex items-start space-x-3">
                     <span className="text-white/50 mt-1">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className="glass-morphism p-8 rounded-2xl hover-lift border-2 border-red-500/30">
-              <h3 className="text-3xl font-bold text-red-400 mb-8 filter drop-shadow(0 0 10px rgba(255,0,0,0.5))">LARANGAN</h3>
-              <ul className="space-y-4 text-white/80 text-lg font-light">
-                {[ 'DILARANG melepas jaket sakral Majapahit saat ada undangan/event',
-                   'Dilarang double komunitas atau menjadi member/prospek di pihak lain',
-                   'Melanggar kode etik persaudaraan',
-                   'Tidak mengikuti kegiatan tanpa alasan yang jelas'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start space-x-3">
-                    <span className="text-red-400/50 mt-1">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
