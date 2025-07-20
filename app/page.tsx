@@ -485,28 +485,50 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 bg-black grid-pattern">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+      {/* Filosofi Majapahit Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900 grid-pattern relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-white rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-chrome mb-6">TENTANG MAJAPAHIT RIDERS</h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
+            <div className="inline-block mb-6">
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-4"></div>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-black text-chrome mb-6 tracking-wider">FILOSOFI MAJAPAHIT</h2>
+            <p className="text-white/60 text-xl max-w-3xl mx-auto font-light">
+              Makna dan filosofi di balik nama Majapahit Riders
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mt-6"></div>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="glass-morphism p-8 rounded-2xl hover-lift">
-                <h3 className="text-3xl font-bold text-chrome mb-6">Mengapa Majapahit?</h3>
-                <p className="text-white/80 leading-relaxed text-lg font-light">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* Mengapa Majapahit */}
+            <div className="glass-morphism p-8 rounded-2xl hover-lift border border-white/10 group">
+              <h3 className="text-3xl font-bold text-chrome mb-6 group-hover:text-white transition-colors duration-300">
+                Mengapa Majapahit?
+              </h3>
+              <div className="bg-gradient-to-r from-white/10 to-transparent p-6 rounded-xl border-l-4 border-white">
+                <p className="text-white/90 leading-relaxed text-lg font-light">
                   Kami mengambil nama Majapahit karena mencerminkan kekuatan budaya yang mencakup 
                   segala daerah dan berbagai penjuru, khususnya Jawa Timur. Merujuk kepada 
                   kebesaran Gajah Mada dan mengkiaskan kelompok yang besar dan kuat.
                 </p>
               </div>
-              
-              <div className="glass-morphism p-8 rounded-2xl hover-lift">
-                <h3 className="text-3xl font-bold text-chrome mb-6">Mengapa Gajah?</h3>
-                <p className="text-white/80 leading-relaxed text-lg font-light">
+            </div>
+            
+            {/* Mengapa Gajah */}
+            <div className="glass-morphism p-8 rounded-2xl hover-lift border border-white/10 group">
+              <h3 className="text-3xl font-bold text-chrome mb-6 group-hover:text-white transition-colors duration-300">
+                Mengapa Gajah?
+              </h3>
+              <div className="bg-gradient-to-r from-white/10 to-transparent p-6 rounded-xl border-l-4 border-white">
+                <p className="text-white/90 leading-relaxed text-lg font-light">
                   Gajah menunjukkan bahwa Majapahit ini kuat dan susah untuk ditumbangkan. 
                   Gajah juga hewan yang kompak, setia, dan penuh kasih sayang - nilai yang 
                   kami junjung tinggi dalam persaudaraan.
@@ -514,23 +536,206 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="grid md:grid-cols-1 gap-10">
+            {/* Arti 3 Bintang */}
+            <div className="glass-morphism p-8 rounded-2xl hover-lift border border-white/10 group">
+              <div className="flex items-center mb-6">
+                <div className="flex space-x-1 mr-4">
+                  <span className="text-4xl animate-pulse" style={{ animationDelay: '0s' }}>⭐</span>
+                  <span className="text-4xl animate-pulse" style={{ animationDelay: '0.5s' }}>⭐</span>
+                  <span className="text-4xl animate-pulse" style={{ animationDelay: '1s' }}>⭐</span>
+                </div>
+                <h3 className="text-3xl font-bold text-chrome group-hover:text-white transition-colors duration-300">
+                  Arti 3 Bintang
+                </h3>
+              </div>
+              <div className="bg-gradient-to-r from-white/10 to-transparent p-6 rounded-xl border-l-4 border-white">
+                <p className="text-white/90 leading-relaxed text-lg font-light">
+                  Merujuk kepada para pendahulu yang mengibarkan bendera Majapahit dengan penuh 
+                  <span className="text-white font-semibold">kebanggaan</span> dan 
+                  <span className="text-white font-semibold">kehormatan</span>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tentang Majapahit Section */}
+      <section id="about" className="py-24 bg-black grid-pattern">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="inline-block mb-6">
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-4"></div>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-black text-chrome mb-6 tracking-wider">TENTANG MAJAPAHIT RIDERS</h2>
+            <p className="text-white/60 text-xl max-w-3xl mx-auto font-light">
+              Visi, misi, prinsip, dan ketentuan dalam komunitas Majapahit Riders
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mt-6"></div>
+          </div>
+          
+          {/* Visi Misi Section */}
+          <div className="mb-24">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Visi & Misi</h3>
+              <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Visi Card */}
-              <div className="p-8 rounded-2xl bg-gray-50 text-gray-900 hover-lift text-center perspective-card shadow-lg shadow-white/10">
-                <div className="card-3d">
-                  <h3 className="text-3xl font-bold text-gray-800 mb-4">Visi</h3>
-                  <p className="text-gray-700 text-lg">
-                    Persaudaraan sampai mendarah daging.
-                  </p>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-gray-500/10 to-black/30 rounded-2xl blur-sm group-hover:blur-none transition-all duration-300"></div>
+                <div className="relative glass-morphism p-8 rounded-2xl hover-lift text-center perspective-card border border-white/20 bg-gradient-to-br from-gray-800/30 via-gray-700/20 to-gray-900/40 h-full">
+                  <div className="card-3d flex flex-col justify-center h-full">
+                    <div className="mb-6">
+                      <div className="w-16 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-4"></div>
+                    </div>
+                    <h4 className="text-2xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent mb-6">Visi</h4>
+                    <p className="text-white/90 text-lg font-light leading-relaxed">
+                      Persaudaraan sampai mendarah daging.
+                    </p>
+                    <div className="mt-6">
+                      <div className="w-12 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              
               {/* Misi Card */}
-              <div className="p-8 rounded-2xl bg-gray-50 text-gray-900 hover-lift text-center perspective-card shadow-lg shadow-white/10">
-                <div className="card-3d">
-                  <h3 className="text-3xl font-bold text-gray-800 mb-4">Misi</h3>
-                  <p className="text-gray-700 text-lg">
-                    Menjunjung tinggi persaudaraan dan sopan santun dimanapun berada, serta menjadikan citra club motor baik dikalangan masyarakat.
-                  </p>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-gray-500/10 to-white/20 rounded-2xl blur-sm group-hover:blur-none transition-all duration-300"></div>
+                <div className="relative glass-morphism p-8 rounded-2xl hover-lift text-center perspective-card border border-white/20 bg-gradient-to-br from-gray-900/40 via-gray-700/20 to-gray-800/30 h-full">
+                  <div className="card-3d flex flex-col justify-center h-full">
+                    <div className="mb-6">
+                      <div className="w-16 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-4"></div>
+                    </div>
+                    <h4 className="text-2xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent mb-6">Misi</h4>
+                    <p className="text-white/90 text-lg font-light leading-relaxed">
+                      Menjunjung tinggi persaudaraan dan sopan santun dimanapun berada, serta menjadikan citra club motor baik dikalangan masyarakat.
+                    </p>
+                    <div className="mt-6">
+                      <div className="w-12 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* 4 Azas Section */}
+          <div className="mb-24">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">4 Azas Majapahit</h3>
+              <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+            </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="glass-morphism p-8 rounded-2xl hover-lift border border-white/10 group">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/30 p-6 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 group/item">
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                        🕌
+                      </div>
+                      <span className="text-white/90 text-lg font-semibold group-hover/item:text-white transition-colors">Agama</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/30 p-6 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 group/item">
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                        👨‍👩‍👧‍👦
+                      </div>
+                      <span className="text-white/90 text-lg font-semibold group-hover/item:text-white transition-colors">Keluarga</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/30 p-6 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 group/item">
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                        📚
+                      </div>
+                      <span className="text-white/90 text-lg font-semibold group-hover/item:text-white transition-colors">Pendidikan</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/30 p-6 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 group/item">
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                        🤝
+                      </div>
+                      <span className="text-white/90 text-lg font-semibold group-hover/item:text-white transition-colors">Komunitas</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Peraturan & Perihal Section */}
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Peraturan Majapahit */}
+            <div>
+              <div className="text-center mb-8">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Peraturan</h3>
+                <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+              </div>
+              <div className="glass-morphism p-8 rounded-2xl hover-lift border border-white/10 group h-full">
+                <div className="space-y-6">
+                  <div className="bg-gradient-to-r from-white/10 to-transparent p-6 rounded-xl border-l-4 border-white hover:border-gray-300 transition-colors duration-300">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg mt-1 shadow-md flex-shrink-0">
+                        1
+                      </div>
+                      <p className="text-white/90 text-lg font-light leading-relaxed">
+                        Sanksi jika tidak ikut kopdar <span className="text-white font-semibold">2x</span> (tanpa izin yang valid - <span className="text-gray-300 font-semibold">SP1</span>)
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-white/10 to-transparent p-6 rounded-xl border-l-4 border-white hover:border-gray-300 transition-colors duration-300">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg mt-1 shadow-md flex-shrink-0">
+                        2
+                      </div>
+                      <p className="text-white/90 text-lg font-light leading-relaxed">
+                        <span className="text-gray-300 font-semibold">Dilarang keras</span> memakai patch jika tidak ada acara penting
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-white/10 to-transparent p-6 rounded-xl border-l-4 border-white hover:border-gray-300 transition-colors duration-300">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg mt-1 shadow-md flex-shrink-0">
+                        3
+                      </div>
+                      <p className="text-white/90 text-lg font-light leading-relaxed">
+                        Member prospek <span className="text-white font-semibold">wajib</span> melaksanakan arahan divisi pengurus (dalam komunitas)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Perihal Majapahit */}
+            <div>
+              <div className="text-center mb-8">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Perihal Penting</h3>
+                <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+              </div>
+              <div className="glass-morphism p-8 rounded-2xl hover-lift border-2 border-white/30 bg-gradient-to-br from-gray-800/20 to-gray-900/10 group h-full">
+                <div className="flex items-center justify-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                    <span className="text-3xl">⚠️</span>
+                  </div>
+                </div>
+                <div className="bg-gradient-to-r from-gray-800/40 to-gray-900/20 p-8 rounded-xl border-2 border-white/20 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent animate-pulse"></div>
+                  <div className="relative z-10 text-center">
+                    <p className="text-white text-xl font-semibold leading-relaxed">
+                      Jika keluar komunitas, <span className="text-gray-300 font-bold">semua atribut</span> dari komunitas harus 
+                      <span className="text-gray-300 font-bold">dikembalikan/diambil paksa</span>.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
